@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
+>>>>>>> merging
+=======
 >>>>>>> merging
 # Git, C, CMake and State Machine Tutorial
 
@@ -27,7 +30,6 @@ So without writing a big blurb on Git, I say we just get into it and learn by do
 So you will of now forked my repo from GitHub. What this means is that you have more or less copied (not cloned) my repo. It is a complete copy, including the Git histroy, Git objects etc. The key point is that it now belongs to you and you can do as you wish with it, without disturbing my original repo. It is a handy feature that is implemented by the Git server systems (such as GitLab and GitHub), it is not intrinsically a part of Git. It allows for developers to essentially snapshot someone's project, modify it and then, if they want, they can send the changes back to the original developer who can decide if they want to merge their changes into the original code. Forking is popular in the open source community where people are not always directly included in someone's project.
 
 Throughout this tutorial we will do two things, we will set up a new repository for you to use throughout the semester to manage your code and we will undertake some little challenges in this repository to help further your Git and C abilities.
-
 ## Basics
 
 Now the very basics of Git. Git works using repositories (previously mentioned repos). Repos are essentially a mini filesystem (locally seen as a folder) in which all changes, that happen within that folder, are (or can be) tracked. Git monitors changes to files and stores snapshots of the files at specified points. By snapshotting the file system, Git gives each point point in the repo's history a unique value. Enabling a developer to revert changes, go back and look at previous, or parallel, version as well as lots of other cool stuff we will cover a bit more later.
@@ -476,6 +478,174 @@ One commit will contain the necessary `.h` and `.c` files for a static library t
 >>>>>>> coding1
 =======
 
-One branch will contain the necessary `.h` and `.c` files for a static library that we will build called `espl_lib`. Another branch will contain a `.patch` for your CMake script to link the library. Checkout the branches, find the files, verify their contents and then use cherry pick to merge them to your merging branch. The instructions (in a separate `.md` file) to continue can be found along with the CMake patch.
+Now that you have your library code and the CMake patch we will discuss what patches are, as this will also help strengthen your understanding of commits as well as exposing you to what has the be the most important and legacy method for version control in the software industry. The patch will enable your CMake script to compile the `espl_lib` as a static library which we will then link into your project, using it's functions in your main function.
 
+# Patches
+
+A patch, is a record of the changes made to a set of files. Patch files can then be used to apply the changes to an unmodified sets of files. As such, Git uses patch style diffs (read `man diff` to understand this) to show the changes that have occurred in the repo since the last commit. Open the file where your main function is and add in another print statement directly below the one printing the "Hello ESPL" message. Now `git status` tells us that we have modified that one file but it does not tell us the changes. The command `git diff` will do this for us. You should have an output similar to
+
+``` bash
+diff --git a/src/main.c b/src/main.c
+index 82e0743..cca099a 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -5,5 +5,6 @@
+ int main()
+ {
+     printf("Hello ESPL");
++    printf("This is a new print");
+    return 0;
+ }
+```
+
+Now this is a Git diff. Git being the smart software it is, and as it was created by Linus Torvalds to maintain the Linux kernel, it makes sense that Git uses/creates patches to handle changes. As the Linux kernel uses email and patch files to handle developer submissions to the mainline kernel. What `git diff` produces is actually a unified format patch, read [here](https://en.wikipedia.org/wiki/Diff#Unified_format) for more info.
+
+## Creating Patches
+
+We can therefore create a unified format patch by simply saving the diff output to an appropriately named file. In this case we are patching the file where our main function lives, in my case this is `main.c` and as such I will name my match `main.patch`.
+
+``` bash
+git diff > main.patch
+```
+You should now have a patch file that contains the output of diff. Let's go through the pieces of the patch file so you can better understand it. Having a knowledge of patch files will be essential if you plan to work in any industry that deals with code bases that are handled by more than one person.
+
+The first line tells us that we are dealing with a Git diff generated patch and the files that were changed was the main.c. The second line gives us the hashes of the before and after files as well as the mode of the given file, in this case an ordinary file. The following line shows the before and after file names, this is useful if a file changes its name or if a file is deleted (becomes `/dev/null`). Now comes the more important information. The line starting with `@@` tells us the statistics of the following diff hunk. A patch file can contain multiple of these. `@@ -5,5 +5,6 @@` has the format `@@ -<start line>,<number of lines> +<start line>,<number of lines> @@`. Below I have now included the modified file with line numbers.
+
+``` C
+ 1 #include <stdio.h>                                                               
+ 2                                                                                  
+ 3 #include "espl_lib.h"                                                            
+ 4                                                                                  
+ 5 int main()                                                                       
+ 6 {                                                                                
+ 7     printf("Hello ESPL");                                                        
+ 8     printf("This is a new print");                                               
+ 9    return 0;                                                                     
+10 }    
+```
+From the patch we can see that the modification starts at line 5, meaning the main function and the previous version contained 5 lines. The modified version also started at 5 but now contained 6 lines. The rest of the patch shows where the lines were added within that range, as we can see the line `+    printf("This is a new print");` was added, indicated by the +.
+
+## Applying Patches
+Now that we have our patch file we will want to try it out. To do this remove the line you added when generating your patch. Your file should now look the same as it did before. Running `git status` should show that you have a new untracked file which is your patch file but you `.c` file containing your main function should not be appearing as it has not changed, since you reverted the changes manually.
+
+Now we have two ways to apply a patch, either running the patch hoping that the exact file names exist that the patch file specifies (which they do in our case) or you can apply the patch file to a specific file. Both methods are shown below. Pick one and apply your patch. `man patch` will give you more info on patching.
+
+``` bash
+patch < main.patch
+```
+or
+``` bash
+patch main.c < main.patch
+```
+
+Now you should be able to see your changes back in your `.c` file.
+
+Now in this commit there is a `CMakeLists.patch` that contains a patch that will modify your pervious CMake script to build and link the `espl_lib` library you have either already found or need to find. Open the patch and go through it.
+
+``` bash
+CMakeLists.patch           
+--- CMakeLists.txt  2019-03-20 10:25:46.547529531 +0100                      
++++ CMakeLists.txt  2019-03-20 10:28:36.907537321 +0100                          
+@@ -5,8 +5,12 @@                                                                 
+ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../bin)                  
+
+ include_directories(include)                                                    
++include_directories(lib)                                                        
+
+ file(GLOB SOURCES "src/*.c")                                                    
+
+ add_executable(foo ${SOURCES})                                                  
+
++file(GLOB ESPL_LIB_SRCS "lib/*.c")                              
++add_library(ESPL_LIB ${ESPL_LIB_SRCS})                                          
++target_link_libraries(foo ESPL_LIB)  
+```
+
+We can see that there has been 4 lines added. The first line has added the lib directory to our project's includes. This is such that the espl_lib.h can be found during building. The header file for a library exposes the libraries API, in this case it exposes the function `num_to_words` whilst keeping the inner workings of the library inaccessible to the programmer. As such the library ensures the programmer cannot call `get_digit_word` directly. This is good practice to employ. A `.c` and `.h` file combo should implement a black box of code. Your implemented functions inside the `.c` function don't necessarily need to be exposed via the `.h` file. The exposed functions should give as simple and easy to use interface as possible. Such that as much of the programming logic related to the "module" the files implement is maintained within the `.c` file, not necessarily being exposed via the `.h` if unnecessary. A common mistake of beginner programmers to no not properly modularize their code. You want to write you code such that you can make "modules" for different portions of you code, this way they are reusable and more easily tested as you can test them independently.
+
+Now back to the patch. The three lines at the end of the patch handle the building and linking of the library to our executable. The first line should look familiar in that it is simply gathering the `.c` files from the lib folder needed to build the library. The next line tells CMake that it is to build a static library from the source files that were just globbed. During the build process you will see make compiling a separate target `ESPL_LIB` which will generate a library file (`.a`) in the build directory. The final command is quite self-explanatory and handles the linking of the library to the executable.
+
+Now that we have our patch and understand it, continue gathering the library files and the `CMakeLists.patch` from this branch and merge them to merging. Once there you are to modify your main function to do the following (you should copy this so when you change branches you don't loose it):
+
+ * Prompt the user from the command line for a number input, instructions should be displayed
+ * Call the `num_to_words` function from the `espl_lib` on the inputted numbers
+ * Display the returned string to the terminal
+ * Prompt the user if they wish to either exit the program or run another number and handle their decision accordingly.
+
+Once your program is performing the above functions and is building using your patched CMake project in the merging branch. Merge it all to master and create a `git tag` (information on how to found [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging)) with the annotation "Exercise 1.1 Submission". This will be used as part of the exercise submissions.
+Following the completion of this go to the `conflicts` branch where we will look at how to deal with merge conflicts.
+# Merge Conflicts
+
+When merging two branches there are sometimes changes that Git cannot automatically resolve. Git prefers then to flag the conflict as something it cannot resolve instead of intervening and potentially causing even larger errors. Errors that require human intervention usually result from changes to the same file, for example two people modify the same line of a file. Git would then require the person merging the files to decide which one it should keep.
+
+It is important to note that during a merge process if you choose the wrong line or mess up the merge you can revert the merge. Meaning you must only commit the merge once you are happy that everything has been merged properly. At any time you can use the `git reset --hard HEAD` command to reset your HEAD to the last commit before the merge (if you didn't pick up on what this is then read [this](http://www.gitguys.com/topics/head-where-are-we-where-were-we/)).
+
+## Resolving a conflict
+
+When there is a merge conflict Git will tell you that there is unmerged paths and it will give you a list of the files involved. This can be found using `git status`.
+
+``` bash
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+	both modified:   src/main.c
+```
+
+Inside each conflict file Git places markers that indicate the area of conflict. Let's take the simple example where two changes affected the same line of code in a file. This means that Git needs you to decide which change to keep. You will manually need to edit the code to integrate both solutions into your project. Choosing how to fix your code will be up to your discretion.
+
+Now in this example I have branched my original code, then on the new branch **and** on my current branch created commits that modify the same line of code. On the current branch I added "Result:" to a `printf` statement while on the branch I added "Output:".
+
+``` bash
+Original code (shared commit) ------ + "Result:"
+                              |----- + "Output:"
+```
+
+This has caused a merge conflict as the commit which they both share now has two different diffs when compared with the HEAD of both branches.
+
+Looking into the file `src/main.c`, as shown by `git status`, we would see the following around the line of interest.
+``` C
+<<<<<<< HEAD                                                                     
+        printf("Result: %s", tmp);                                               
+=======                                                                          
+        printf("Output: %s", tmp);                                               
+>>>>>>> bar      
+```
+
+This tells use that on our current branch (our current HEAD) the line containing "Result", where as on the branch we wish to merge into our current branch (bar) the line contains "Output". Git does not know which one we wish to use and as such we must decide. Let's say that we wish the have the line contain output and not result, then we must manually delete the markers from Git as well as the line. Using our new patch knowledge we can see the what needs to be done below.
+
+``` bash
+--- src/main.c	2019-03-20 11:47:22.947753390 +0100
++++ src/main.c	2019-03-20 11:47:34.777753931 +0100
+@@ -8,11 +8,7 @@
+     char *tmp = NULL;
+     tmp = num_to_words(123);
+     if (tmp)
+-<<<<<<< HEAD
+-        printf("Result: %s", tmp);
+-=======
+         printf("Output: %s", tmp);
+->>>>>>> bar
+     else
+         return 1;
+    return 0;
+Once you have resolved the merge conflict you can then add the resolved file and finalize the merge with a normal commit. The commit message should summarize the changes during the merge.
+
+Now that you has seen the basic ideas of how merging works, lets see if you can handle some more complex merge problem yourself. You will find a branch called "unknown_features" which has diverged from this current branch at the previous commit. Your job now is to merge this branch into this current branch and resolve the conflicts presented. The project is a self-contained CMake project inside the `merge_exercise` folder and you will need to apply you C knowledge and CMake knowledge to merge the files correctly to get the project building properly. Please note that there are other tricks and errors hidden in the code. The code should not complile with warnings as warnings should almost always be treated as errors. Warnings will be cause for deducted marks throughout this course. 
+
+The program should be a POSIX thread based state machine that counts to a number specified in the programs options. See the `--help` of the compiled binary to see how to use the program. Once your binary performs this then you have the project merged and building correctly. Merge the project into `merging` and finally into `master`, if both projects are stable and working as expected. Finally create another tag with the annotation "Exercise 1.2 Submission".
+
+If all of that is done then you have completed this tutorial. Please be wary that the use of Git is a requirement in this course and will be part of the project's assessment. Inform yourself on proper use of Git commit messages and make sure that you and your team partner establish a Git workflow that you will use throughout the course. A fun tool to use to make sure your workflow has been used properly is `git log --graph --all` which will give you a graphical representation of your repo's logs.
+
+# Future Reading
+
+There are a number of other features in Git that are useful to know. If you are motivated then I would recommend reading up on these features so that during semester you are able to overcome some problems you will no doubt encounter.
+
+<<<<<<< HEAD
+>>>>>>> merging
+=======
+ * `git stash`
+ * `git pull`
+ * `git show`
+ * `git revert`
+ * `git clean`
 >>>>>>> merging
