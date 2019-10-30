@@ -1,44 +1,48 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> merging
-=======
->>>>>>> merging
 # Git, C, CMake and State Machine Tutorial
 
 ## Getting Started
 
-To do this tutorial you must fork this by clicking the fork button in the GitHub web interface. The instructions will always appear in the root folder of the repo and can be viewed in the web interface.
+To do this tutorial you must fork this by clicking the fork button in the GitHub web interface. 
+The instructions will always appear in the root folder of the repo and can be viewed in the web interface.
 
 ## Welcome
 
-Hello and welcome to this Git tutorial. I am to help you get some savvy Git skills whilst also using the C compilation process and a C project as a means to provide a reasoning behind the power and necessity of Git. The C projects will also demonstrate how a state machine works and a basic way of implementing one.
+Hello and welcome to this Git tutorial. I am to help you get some savvy Git skills whilst also using the C compilation process and a C project as a means to provide a reasoning behind the power and necessity of Git. 
+The C projects will also demonstrate how a state machine works and a basic way of implementing one.
 
-Please note that if you're reading these instruction whilst doing the tutorial they may dissapear if you change branch or do some git trickery that causes them to move/change. As such, while you get to grips with Git I would reccomend moving these README.md files, as they become available, somewhere outside of the current Git repo while you complete the challenge.
+Please note that if you're reading these instruction whilst doing the tutorial they may dissapear if you change branch or do some git trickery that causes them to move/change. 
+As such, while you get to grips with Git I would reccomend moving these README.md files, as they become available, somewhere outside of the current Git repo while you complete the challenge.
 
 ## Git
 
 So what is Git?
 
-I hope you all already know the answer to this. Git is a version control software that is now more or less the gold standard in code version control used around the world. As such, knowing Git is a very important skill in today's workplace for anyone that has anything to do with the development of code, regardless of the code type. It can be useful not just code projects but for the version control of any sort of project based around non-binary files, such as PCB designs.
+I hope you all already know the answer to this. Git is a version control software that is now more or less the gold standard in code version control used around the world. 
+As such, knowing Git is a very important skill in today's workplace for anyone that has anything to do with the development of code, regardless of the code type. 
+It can be useful not just code projects but for the version control of any sort of project based around non-binary files, such as PCB designs.
 
 So without writing a big blurb on Git, I say we just get into it and learn by doing.
 
 ## What is Forking?
 
-So you will of now forked my repo from GitHub. What this means is that you have more or less copied (not cloned) my repo. It is a complete copy, including the Git histroy, Git objects etc. The key point is that it now belongs to you and you can do as you wish with it, without disturbing my original repo. It is a handy feature that is implemented by the Git server systems (such as GitLab and GitHub), it is not intrinsically a part of Git. It allows for developers to essentially snapshot someone's project, modify it and then, if they want, they can send the changes back to the original developer who can decide if they want to merge their changes into the original code. Forking is popular in the open source community where people are not always directly included in someone's project.
+So you will of now forked my repo from GitHub. What this means is that you have more or less copied (not cloned) my repo. 
+It is a complete copy, including the Git histroy, Git objects etc. The key point is that it now belongs to you and you can do as you wish with it, without disturbing my original repo. 
+It is a handy feature that is implemented by the Git server systems (such as GitLab and GitHub), it is not intrinsically a part of Git. 
+It allows for developers to essentially snapshot someone's project, modify it and then, if they want, they can send the changes back to the original developer who can decide if they want to merge their changes into the original code. 
+Forking is popular in the open source community where people are not always directly included in someone's project.
 
 Throughout this tutorial we will do two things, we will set up a new repository for you to use throughout the semester to manage your code and we will undertake some little challenges in this repository to help further your Git and C abilities.
 ## Basics
 
 Now the very basics of Git. Git works using repositories (previously mentioned repos). Repos are essentially a mini filesystem (locally seen as a folder) in which all changes, that happen within that folder, are (or can be) tracked. Git monitors changes to files and stores snapshots of the files at specified points. By snapshotting the file system, Git gives each point point in the repo's history a unique value. Enabling a developer to revert changes, go back and look at previous, or parallel, version as well as lots of other cool stuff we will cover a bit more later.
 
-Without going into it too much now, we know that a Git repo will give us a folder, whose content will be tracked. So now let's set up the repo that you will use throughout semester.
+Without going into it too much now, we know that a Git repo will give us a folder, whose content will be tracked. 
+So now let's set up the repo that you will use throughout semester.
 
 For anyone doing this that is not one of my students you will have to just ignore the specifics aimed at my students.
 
-You can either use the LRZ GitLab or a **private** GitHub repo for this, the functionality is identical. Do not use a public GitHub as other students will be able to view your code and you might be involved in some nasty business if duplicate code is found in another student's project.
+You can either use the LRZ GitLab or a **private** GitHub repo for this, the functionality is identical. 
+Do not use a public GitHub as other students will be able to view your code and you might be involved in some nasty business if duplicate code is found in another student's project.
 
 So now you will need to create a new project. This will require you to do the following:
 
@@ -55,7 +59,8 @@ So now you will need to create a new project. This will require you to do the fo
   git clone <SSH or HTTPS URL> ESPL_code
   ```
 
-  Now we will have the Git repo on our local machines. Next we will look into the basics of creating and storing code in our repository. Please note that after the basics of the "ESPL_code" repository are set up we will do the rest of this tutorial in the tutorial repository, I am just wanting to make sure you have a Git repo set up and ready for the rest of semester so that you USE IT!
+  Now we will have the Git repo on our local machines. Next we will look into the basics of creating and storing code in our repository. 
+Please note that after the basics of the "ESPL_code" repository are set up we will do the rest of this tutorial in the tutorial repository, I am just wanting to make sure you have a Git repo set up and ready for the rest of semester so that you USE IT!
 
 # How Git Tracks Your Changes
 
@@ -143,7 +148,8 @@ Now attempting to commit should result in the output
 
 Showing us a few things. It shows us our branch `master`, the beginning of the commit hash `3c2b284`, the commit message `Added README`, the changes made as well as the files added, in this case the `README.md`. To find out what the mode is read [here](https://stackoverflow.com/questions/737673/how-to-read-the-mode-field-of-git-ls-trees-output/8347325#8347325).
 
-We have now successfully created a commit in our repository. Running `git log` we can see that the commit now appears in the repository's logs. In the log you can also see the entire commit hash which is used to identify that specific commit within your repo.
+We have now successfully created a commit in our repository. Running `git log` we can see that the commit now appears in the repository's logs. 
+In the log you can also see the entire commit hash which is used to identify that specific commit within your repo.
 
 In a repo you will create many commits as you implement features and commit them, the commits will not be automatically visible to others who also have the repository on their machines or are looking through the web interface. Git does not automatically sync changes as it is designed to be usable offline, only syncing when told to. To then send your commits to the remote repository, stored on a Git server, you must `git push`. To understand what we are doing exactly when we are pushing we need to know a couple of things.
 
@@ -162,7 +168,8 @@ Breaking this command down we have:
   ...
   ```
 
-  This is telling us that when we use `origin` we will be sending our commits to the server specified by that alias. It is possible to send to multiple servers at once, for instance a backup server, or to send to both a private and public server.
+  This is telling us that when we use `origin` we will be sending our commits to the server specified by that alias. 
+It is possible to send to multiple servers at once, for instance a backup server, or to send to both a private and public server.
 
 * `master`, tells Git which branch's commits we are wanting to send. We will cover branches soon.
 
@@ -179,19 +186,31 @@ To git.alxhoff.com:alxhoff/espl-test.git
 
 which should be quick self-explanatory.
 
-Now that we have covered how to add, commit and push we will stop using the ESPL repository and focus purely on this tutorial repository that you forked. The ESPL repository is there for you to use over the semester, read the exercise and project descriptions to see how your use of Git will be assessed. Using Git is required as part of the grading in this course, USE IT!
+Now that we have covered how to add, commit and push we will stop using the ESPL repository and focus purely on this tutorial repository that you forked. 
+The ESPL repository is there for you to use over the semester, read the exercise and project descriptions to see how your use of Git will be assessed. Using Git is required as part of the grading in this course, USE IT!
 
 # Programming Challenge
 
-Inside this repository there is a small programming challenge where you will learn about some more advanced features of Git, the basics of building a C project and also do some very basic programming exercises. The first step will be to start our C project. To do this you will need to get and merge the CMake project to your master branch, to do this we need to learn about branches and merging. First step it branching.
+Inside this repository there is a small programming challenge where you will learn about some more advanced features of Git, the basics of building a C project and also do some very basic programming exercises. 
+The first step will be to start our C project. To do this you will need to get and merge the CMake project to your master branch, to do this we need to learn about branches and merging. First step it branching.
 
-Git uses branches to allow for parallel development of code without interfering with the code on other peoples machines or without breaking your stable code base whilst you hack around some changes. How exactly branches are used is a personal preference or the preference of your company, but there are some good ideas to employ when using your Git branches.
+Git uses branches to allow for parallel development of code without interfering with the code on other peoples machines or without breaking your stable code base whilst you hack around some changes. 
+How exactly branches are used is a personal preference or the preference of your company, but there are some good ideas to employ when using your Git branches.
 
-We have already come across the master branch, as the name implies this is the root branch of the repository and it usually the most sacred of all branches. Good practice is to not develop directly on the master branch as the master branch should always have a stable version of your code that builds and runs, while it might not have all the latest features, it should be able to be demo'd at any moment in time (except maybe exactly during a merge). You should as such never push to master, only merge to master. Be prepared for impromptu requests to see your code running, it should thus be able to be run from your master branch always even if it lacks all the latest features.
+We have already come across the master branch, as the name implies this is the root branch of the repository and it usually the most sacred of all branches. 
+Good practice is to not develop directly on the master branch as the master branch should always have a stable version of your code that builds and runs, while it might not have all the latest features, 
+it should be able to be demo'd at any moment in time (except maybe exactly during a merge). You should as such never push to master, only merge to master. Be prepared for impromptu requests to see your code running, 
+it should thus be able to be run from your master branch always even if it lacks all the latest features.
 
-As master is this stable branch that must never break, you might of guessed that all development should be done on other branches. This is correct. When working in large groups or on a project where you are swapping between implementing multiple features at the same time, each person or feature should be a branch. I would recommend towards having a branch for a feature as multiple people might work on a feature over the duration of a project. To understand the next concept we need to have a basic understanding of what merging is, while we will look at merging in practice shortly, a theoretical understanding is needed.
+As master is this stable branch that must never break, you might of guessed that all development should be done on other branches. 
+This is correct. When working in large groups or on a project where you are swapping between implementing multiple features at the same time, each person or feature should be a branch. 
+I would recommend towards having a branch for a feature as multiple people might work on a feature over the duration of a project. To understand the next concept we need to have a basic understanding of what merging is,
+ while we will look at merging in practice shortly, a theoretical understanding is needed.
 
-Merging, as the name implies, is the task of merging the code (the changes) from one branch into another. If you have a branch to implement a certain feature, you would then merge this feature into your master branch once the feature is completed. The merge process can become quite complex and involved but for now you should understand what merging aims to achieve. As you can imagine, merging large complex changes can become quite involved, while Git does a great job at handling most changes automatically it does not always manage on its own. As such, merging your changes into master can sometimes lead master to becoming unstable whilst the merge is handled. As such you can imagine that employing a merge branch to handle the merging of complicated code changes into one single delta can act as a good intermediary between your feature branches and the master branch.
+Merging, as the name implies, is the task of merging the code (the changes) from one branch into another. If you have a branch to implement a certain feature, you would then merge this feature into your master branch once 
+the feature is completed. The merge process can become quite complex and involved but for now you should understand what merging aims to achieve. As you can imagine, merging large complex changes can become quite involved, 
+while Git does a great job at handling most changes automatically it does not always manage on its own. As such, merging your changes into master can sometimes lead master to becoming unstable whilst the merge is handled. 
+As such you can imagine that employing a merge branch to handle the merging of complicated code changes into one single delta can act as a good intermediary between your feature branches and the master branch.
 
 Therefore it can be good practice to have a branch structure similar to the following
 
@@ -200,16 +219,21 @@ master ----- merging ----- feature A
                      |---- feature B
 ```
 
-Thus any complicated merge conflicts will be contained to the merging branch and can be resolved there before being merge (via a less complex merge as the complex problems have now been resolved) into the master branch. We will cover merge errors and the likes later as your perform your own merges.
+Thus any complicated merge conflicts will be contained to the merging branch and can be resolved there before being merge (via a less complex merge as the complex problems have now been resolved) into the master branch.
+ We will cover merge errors and the likes later as your perform your own merges.
 
-Let us now go to the merging branch. To check the branches that exist in the repository one can use the `git branch` command. A new repository might not show all of the branches as Git does not download all information when not required, to try and minimize the data required locally. `man git fetch` will detail how Git fetch can be used.
+Let us now go to the merging branch. To check the branches that exist in the repository one can use the `git branch` command. A new repository might not show all of the branches as Git does not download all
+ information when not required, to try and minimize the data required locally. `man git fetch` will detail how Git fetch can be used.
 
-When no remote is specified the default `origin` is used. Run `git fetch` to thus retrieve all the branches and tags on the origin remote. Now run `git branch --all` to list all of the branches on the origin. We want a branch called `merging` where we will perform our merges before merging to master. To do this we need to first create a branch and then swap to this branch. To create a new branch simply use
+When no remote is specified the default `origin` is used. Run `git fetch` to thus retrieve all the branches and tags on the origin remote. Now run `git branch --all` to list all of the branches on the origin. 
+We want a branch called `merging` where we will perform our merges before merging to master. To do this we need to first create a branch and then swap to this branch. To create a new branch simply use
 
 ``` bash
 git branch merging
 ```
-now if we list our branches using `git branch` you should now see that there is a `merging` branch. We now need to change to this branch so our modifications that we perform are done there. It should be noted that the new branch is a copy of this current branch, although if we were to continue modifying master then the merging branch would fall behind and would need to be brought back up to speed with master. But for now just checkout `merging` using the checkout command.
+now if we list our branches using `git branch` you should now see that there is a `merging` branch. We now need to change to this branch so our modifications that we perform are done there. 
+It should be noted that the new branch is a copy of this current branch, although if we were to continue modifying master then the merging branch would fall behind and would need to be brought back up to speed with master. 
+But for now just checkout `merging` using the checkout command.
 
 ``` bash
 git checkout merging
@@ -222,9 +246,11 @@ git checkout -b merging
 
 # Merge Basics
 
-Now that you have checked out your merging branch we are going to perform some merges. As this tutorial will also look into building C projects, using CMake specifically, we will using merging and other Git tools to pull a basic CMake project together.
+Now that you have checked out your merging branch we are going to perform some merges. As this tutorial will also look into building C projects, using CMake specifically, 
+we will using merging and other Git tools to pull a basic CMake project together.
 
-Firstly we will want to make our Git server (origin remote) aware of this new branch we have created, as it does not get made aware of this change unless we tell it. Similarly to before we will use the `git push` command but this time our branch has changed.
+Firstly we will want to make our Git server (origin remote) aware of this new branch we have created, as it does not get made aware of this change unless we tell it. Similarly to before we will use the `git push` command but 
+this time our branch has changed.
 
 As such please push the current branch using the previous command of
 
@@ -233,11 +259,14 @@ git push ______ ______
 ```
 You will need to fill in those two blanks.
 
-Now back to the problem. You should be able to find a branch called `make`, check it out using your newly learnt checkout command. On this branch is the skeleton for our CMake project. Now to merge the `CMakeLists.txt` file, which is the core CMake file for any CMake build, into our merging branch. We need to use the `git merge` command. Details of this can be found in the manual, you should be able to run the correct `man` command yourself now to do this.
+Now back to the problem. You should be able to find a branch called `make`, check it out using your newly learnt checkout command. On this branch is the skeleton for our CMake project. Now to merge the `CMakeLists.txt` file, 
+which is the core CMake file for any CMake build, into our merging branch. We need to use the `git merge` command. Details of this can be found in the manual, you should be able to run the correct `man` command yourself now to do this.
 
-Merging is always done on the branch into which you wish to merge. If you wish to merge your `merging` branch into `master` you would first need to `git checkout master` and then merge `merging` into `master`. As we are wanting to merge the `make` branch into our current branch we don't need to change branches.
+Merging is always done on the branch into which you wish to merge. If you wish to merge your `merging` branch into `master` you would first need to `git checkout master` and then merge `merging` into `master`. 
+As we are wanting to merge the `make` branch into our current branch we don't need to change branches.
 
-The `git merge` command handles the merging of files automatically, although it requires human intervention occasionally. We will get to this later. For now we simply want to merge the `CMakeLists.txt` into our current branch. As our branch does not have a `CMakeLists.txt` file the merge should not have any errors when performing this merge.
+The `git merge` command handles the merging of files automatically, although it requires human intervention occasionally. We will get to this later. For now we simply want to merge the `CMakeLists.txt` into our current branch. 
+As our branch does not have a `CMakeLists.txt` file the merge should not have any errors when performing this merge.
 
 We can thus execute
 
@@ -253,7 +282,8 @@ create mode 100644 CMakeLists.txt
 ```
 Telling us that a new file was created with 12 new insertions, 1 for each line in the file. Now if we run `git log` we will see the commits made on the make branch when this `CMakeLists.txt` file was added to the repo.
 
-Now that we have got the commits from the make branch merged into our branch we should push these changes to the remote, running `git push` again will now show that the files have been pushed. If we rerun `git log` you will notice that the commit where the `CMakeLists.txt` file was commited has now changed from
+Now that we have got the commits from the make branch merged into our branch we should push these changes to the remote, running `git push` again will now show that the files have been pushed. 
+If we rerun `git log` you will notice that the commit where the `CMakeLists.txt` file was commited has now changed from
 
 ``` bash
 (HEAD -> merging, origin/make, make)
@@ -262,23 +292,34 @@ to
 ``` bash
 (HEAD -> merging, origin/merging, origin/make, make)
 ```
-meaning that this commit can now found be found in origin/merging and not just merging, origin/make and make. This annotation (`origin/`) signifies the remote branch (ie. the branch on the server). The branch merging is your local branch while the branch origin/merging is that on the remote.
+meaning that this commit can now found be found in origin/merging and not just merging, origin/make and make. This annotation (`origin/`) signifies the remote branch (ie. the branch on the server). 
+The branch merging is your local branch while the branch origin/merging is that on the remote.
 
 # CMake
 
-Now that we have merged our CMakeLists to our current branch we need to go about making the project build such that it is stable and is in a condition that we would be happy to have on `master`. Good practice when building code projects is to have a folder where all temporary and/or build files are kept such that your project folder doesn't become cluttered with temporary build files. Cleaning the build is also easier as all build files are clumped together.
+Now that we have merged our CMakeLists to our current branch we need to go about making the project build such that it is stable and is in a condition that we would be happy to have on `master`. 
+Good practice when building code projects is to have a folder where all temporary and/or build files are kept such that your project folder doesn't become cluttered with temporary build files. 
+Cleaning the build is also easier as all build files are clumped together.
 
 A common standard practice is to use a `build` folder. As such create a build folder in your Git repo's root, such that the build folder and `CMakeLists.txt` are in the same folder.
 
-Now running the command `man cmake` we can see that to execute a CMake script one simply has to call the command cmake and the path to the cmake script file. First navigate into the build directory and then execute `cmake ..` where `..` specifies the folder in which the CMake script can be found, while the current directory (build) is used as the build directory. Moving up a folder (`cd ..`) and running `git status` you can now see that the build directory is now untracked and has had changes done to it. Running `git status build` shows us that the build directory now includes a `CMakeCache.txt` and a directory `CMakeFiles`. These are the temporary files generated by CMake.
+Now running the command `man cmake` we can see that to execute a CMake script one simply has to call the command cmake and the path to the cmake script file. First navigate into the build directory
+ and then execute `cmake ..` where `..` specifies the folder in which the CMake script can be found, while the current directory (build) is used as the build directory. Moving up a folder (`cd ..`) and 
+running `git status` you can now see that the build directory is now untracked and has had changes done to it. Running `git status build` shows us that the build directory now includes a `CMakeCache.txt` 
+and a directory `CMakeFiles`. These are the temporary files generated by CMake.
 
-Now before we go ahead and actually get the CMake project building lets play it safe and add **all** of the current files in the Git to the staging area, commit and push them so that we have a safe point to return to. Do this yourself, using a meaningful commit message.
+Now before we go ahead and actually get the CMake project building lets play it safe and add **all** of the current files in the Git to the staging area, commit and push them so that we have a safe point 
+to return to. Do this yourself, using a meaningful commit message.
 
 ## .gitignore
 
-When committing the files you will see a lot of new files being created in Git. These are all temporary build files and should not actually be added to Git. If you already was questioning what I was doing by adding all of these then pat yourself on the back, you were correct in thinking so. This is a common problem that people new to Git have in that they include all sorts of useless metadata files, build files and binaries to the Git repository so that they clutter the Git repository and make navigating around the branches difficult as you create little changes without meaning so that changing branches becomes more difficult. This will be something you will come across in the future. But for now we will now fix this error by using a file called the `.gitignore`.
+When committing the files you will see a lot of new files being created in Git. These are all temporary build files and should not actually be added to Git. If you already was questioning what 
+I was doing by adding all of these then pat yourself on the back, you were correct in thinking so. This is a common problem that people new to Git have in that they include all sorts of useless metadata files,
+ build files and binaries to the Git repository so that they clutter the Git repository and make navigating around the branches difficult as you create little changes without meaning so that changing branches becomes more difficult.
+ This will be something you will come across in the future. But for now we will now fix this error by using a file called the `.gitignore`.
 
-The `.gitignore` is a hidden file that lives in the Git root and contains a list of files that should intentionally be left untracked. Meaning that changes to those files are not of concern to Git. A more detailed description of how to use this file can be found [here](https://git-scm.com/docs/gitignore).
+The `.gitignore` is a hidden file that lives in the Git root and contains a list of files that should intentionally be left untracked. Meaning that changes to those files are not of concern to Git. 
+A more detailed description of how to use this file can be found [here](https://git-scm.com/docs/gitignore).
 
 For now we just want to tell Git that the build folder's contents should be left untracked. To do this we need to create the `.gitignore` file and put the build folder in it.
 
@@ -290,19 +331,25 @@ From the Git repo's root directory
 
 ## Removing Staging Cache
 
-Now running Git status we can see that the `.gitignore` file is untracked but the files we wish to have untracked (the build folder) are still being tracked. This is because the files are in the staging cache and need to thus be removed before the gitignore will be applied to them. A common fix that is used is to simply remove all files from the staging cache and then add them back.
+Now running Git status we can see that the `.gitignore` file is untracked but the files we wish to have untracked (the build folder) are still being tracked. 
+This is because the files are in the staging cache and need to thus be removed before the gitignore will be applied to them. A common fix that is used is to simply remove all files from the staging cache and then add them back.
 
 To do so run
 
 ``` bash
 git rm -r --cached .
 ```
-This will recursively remove tracked files from the staging cache. Running `git status` again will now show us that all of the files in the repo have been deleted, meaning deleted from the staging area. In the untracked files section you will now only see the README, CMakeLists and .gitignore as these files have not been ignored via the gitignore. Now we can add these files back and commit them using something such as "Actualizing gitignore" as the commit message. After pushing the new commit, if we look at the repo through the web interface, looking specifically at the files on the merging branch, you will see that the build files are not included. It is important to add all files that you do not want included in the repository to be added to the gitignore so that there is no way for them to become accidentally included in a commit, this makes you look like a Git noob if you are committing build files.
+This will recursively remove tracked files from the staging cache. Running `git status` again will now show us that all of the files in the repo have been deleted, meaning deleted from the staging area. 
+In the untracked files section you will now only see the README, CMakeLists and .gitignore as these files have not been ignored via the gitignore. Now we can add these files back and commit them using something such
+ as "Actualizing gitignore" as the commit message. After pushing the new commit, if we look at the repo through the web interface, looking specifically at the files on the merging branch, you will see that the build 
+files are not included. It is important to add all files that you do not want included in the repository to be added to the gitignore so that there is no way for them to become accidentally included in a commit, this 
+makes you look like a Git noob if you are committing build files.
 
 
 ## Onwards With CMake
 
-Now that we have solved that problem let us continue building our CMake project. Previously we saw that CMake complained that there were no sources given to the target foo. Let us pick through the CMake file so we understand what went wrong and what we need to fix it.
+Now that we have solved that problem let us continue building our CMake project. Previously we saw that CMake complained that there were no sources given to the target foo. Let us pick through the CMake file so
+ we understand what went wrong and what we need to fix it.
 
 To do so jump to the branch `compiling`.
 
@@ -311,7 +358,8 @@ In your web browser, if you select the branch `compiling` you can read the READM
 ... First step instructions, found in README.md
 # Compiling C programs
 
-The compiling of a C program takes place in three steps. Each carried out by CMake. In the following couple of exercises you will look at each step and how they work. This will hopefully mean I have less questions to answer later in semester.
+The compiling of a C program takes place in three steps. Each carried out by CMake. In the following couple of exercises you will look at each step and how they work. This will hopefully mean I have less questions 
+to answer later in semester.
 
 The three steps are:
 1. Preprocessing
@@ -323,9 +371,12 @@ The three steps are:
 
 ## Preprocessor
 
-A big advantage that C has over interpreter based languages as well as other compiled languages, such as Java, is its precompiler. This preprocessor allows a programmer to use certain directives to simplify coding. The most basic analogy for what a lot of the preprocessor does can be thought of as "cut and paste", where chunks of code are pasted around to minimize the amount of manual code copying and/or search and replace the programmer must perform.
+A big advantage that C has over interpreter based languages as well as other compiled languages, such as Java, is its precompiler. This preprocessor allows a programmer to use certain directives to simplify coding. 
+The most basic analogy for what a lot of the preprocessor does can be thought of as "cut and paste", where chunks of code are pasted around to minimize the amount of manual code copying and/or search and replace the
+ programmer must perform.
 
-There are specific preprocessor directives, such as `#include` and `#define` which you should all be familiar with. One can also create conditional statements that allow for the preprocessor to either include or not include code sections. This is done with the directives `#if`, `#ifdef` and `#ifndef`. A common example of these directives would be when performing "feature inclusion" via compiled flags.
+There are specific preprocessor directives, such as `#include` and `#define` which you should all be familiar with. One can also create conditional statements that allow for the preprocessor to either include or not 
+include code sections. This is done with the directives `#if`, `#ifdef` and `#ifndef`. A common example of these directives would be when performing "feature inclusion" via compiled flags.
 
 ``` C
 #ifdef USE_AMAZING_FEATURE
@@ -339,11 +390,14 @@ device_t dev = NULL
 
 #### Includes
 
-The include directive should be one that everyone is familiar with (if you don't know it this tutorial is going to be extra fun for you). This directive is found at the top of most C files. Includes enable the inclusions (funny that) of header files that contain required function *declarations* (function prototypes) and any other data that is required to interact with the API that the header file exposes from the relevant `.c` file, eg. constant values. This is achieved by the preprocessor pasting the contents of the header file wherever the relevant `#include <filename>` directive is found. Remember this when trying to debug include errors.
+The include directive should be one that everyone is familiar with (if you don't know it this tutorial is going to be extra fun for you). This directive is found at the top of most C files. Includes enable the inclusions 
+(funny that) of header files that contain required function *declarations* (function prototypes) and any other data that is required to interact with the API that the header file exposes from the relevant `.c` file, eg.
+ constant values. This is achieved by the preprocessor pasting the contents of the header file wherever the relevant `#include <filename>` directive is found. Remember this when trying to debug include errors.
 
 #### Defines
 
-The define directive is used for text substitution, allowing for few nifty little tricks when writing C code. Firstly the `#define` allows the programmer to set a flag or give a certain text literal a value, which is then substituted during the preprocessing step of the build process. Commonly called a "hash define". This gives a few advantages, outlines below are the key, and most common, advantages.
+The define directive is used for text substitution, allowing for few nifty little tricks when writing C code. Firstly the `#define` allows the programmer to set a flag or give a certain text literal a value, which is 
+then substituted during the preprocessing step of the build process. Commonly called a "hash define". This gives a few advantages, outlines below are the key, and most common, advantages.
 
  * Setting flags.
 
@@ -366,7 +420,8 @@ printf("Value waz %d", da_value);
 ```
  * Human readability.
 
- By using hash defines instead of magic numbers (should be avoided whenever possible) code is able to be a more easily read as it will real more like actual text. This is important when sharing code or developing with others. Your code should read like a book.
+ By using hash defines instead of magic numbers (should be avoided whenever possible) code is able to be a more easily read as it will real more like actual text. This is important when sharing code or developing with others. 
+Your code should read like a book.
 
  ``` C
 #define SMILEY_X_LOCATION   12
@@ -383,7 +438,8 @@ void main( int argc, char **argv ) {
  ```
  * Centralizes frequently used variable values in one locations, making changing widely used value very easy.
 
-  For example, if the smiley drawn in the previous example is drawn many times in your program and you need to shift its location a hash define allows for the smiley to be moved for all cases where its location's value is used. By changing one centralized value. Simply put, hash defined are slightly better magic numbers. A good example of this would be using the following
+  For example, if the smiley drawn in the previous example is drawn many times in your program and you need to shift its location a hash define allows for the smiley to be moved for all cases where its location's value is used.
+ By changing one centralized value. Simply put, hash defined are slightly better magic numbers. A good example of this would be using the following
 
  ``` C
  #define PI   3.14
@@ -412,21 +468,35 @@ To see some much more involved macros that are used in the auto generation of da
 
 ## Compilation
 
-Now the compilation of code is only one step in the process of building a program. After each C file is run through the preprocessor, so that all the preprocessor directives have been handled, the completed C files must then compiled into assembly code. This is done using a compiler, such as the GNU C Compiler (GCC). The assembly code must then be made into machine code that is actually usable by the target device. This is done by the assembler, which creates machine code from the assembly code. By modifying these pieces of software, collectively called a toolchain, you can change how the code is compiled. Various toolchains are available for different hardware architectures, such that the compiled code is compiled with regards to how the code executes on the target architecture. Compiling for a different architecture, such as compiling on an x86 laptop for a ARM based micro-controller, is known as cross compiling.
+Now the compilation of code is only one step in the process of building a program. After each C file is run through the preprocessor, so that all the preprocessor directives have been handled, the completed C files must then
+ compiled into assembly code. This is done using a compiler, such as the GNU C Compiler (GCC). The assembly code must then be made into machine code that is actually usable by the target device. This is done by the assembler, 
+which creates machine code from the assembly code. By modifying these pieces of software, collectively called a toolchain, you can change how the code is compiled. Various toolchains are available for different hardware architectures, 
+such that the compiled code is compiled with regards to how the code executes on the target architecture. Compiling for a different architecture, such as compiling on an x86 laptop for a ARM based micro-controller, is known as cross 
+compiling.
 
-The file produced by the assembler is a binary file, the formats can vary (ELF, a.out, ...) but the idea is the same. The binary files are called objects, each object file contains the compiled code and exposes the symbols contained within the binary code. Symbols are the addresses of the variables and functions contained within a binary, they can be thought of as the "API" to the object file. The addresses of all the symbols within an object file are stored within a symbol table.
+The file produced by the assembler is a binary file, the formats can vary (ELF, a.out, ...) but the idea is the same. The binary files are called objects, each object file contains the compiled code and exposes the symbols contained 
+within the binary code. Symbols are the addresses of the variables and functions contained within a binary, they can be thought of as the "API" to the object file. The addresses of all the symbols within an object file are stored
+ within a symbol table.
 
-At this point all of your source files have been compiled into separate objects which are unaware of each other. Function calls to functions found in other object files are at this point pointing to an unknown memory locations, in an unknown binary file. These calls are stored as references to undefined addresses which are to be resolved in the last step of building a program, linking. If the completed program binary is to be able to execute, each function call needs to know where the pointed to code actually resides in memory. This is done by the third step in building a program, linking. Common errors pop up along the lines of "undefined reference" when a symbol cannot be resolved, meaning that the linking step was not able to be completed.
+At this point all of your source files have been compiled into separate objects which are unaware of each other. Function calls to functions found in other object files are at this point pointing to an unknown memory locations,
+ in an unknown binary file. These calls are stored as references to undefined addresses which are to be resolved in the last step of building a program, linking. If the completed program binary is to be able to execute, each 
+function call needs to know where the pointed to code actually resides in memory. This is done by the third step in building a program, linking. Common errors pop up along the lines of "undefined reference" when a symbol cannot
+ be resolved, meaning that the linking step was not able to be completed.
 
 I should also mention that libraries, with which you are hopefully familiar with, are simply object files that can be reused by multiple programs such that the same code is not rewritten and/or recompiled unnecessarily.
 
 ## Linking
 
-So we know now that our program is compiled into a number of object files (binary blobs) we need to resolve all of the references to the symbols that are pointed to and found in other object files. As the name implies, linking is the process of linking these references to the actual memory addresses in the appropriate object files. Linking to files within the same source code chunk is usually not that error prone. Most errors come from having to link against static libraries or source code found else where on a system or in another project. Common errors will be those that complain of either missing definitions (cannot find appropriate symbols to link against) or duplicate errors (multiple objects exposing the same symbol).
+So we know now that our program is compiled into a number of object files (binary blobs) we need to resolve all of the references to the symbols that are pointed to and found in other object files. As the name implies, 
+linking is the process of linking these references to the actual memory addresses in the appropriate object files. Linking to files within the same source code chunk is usually not that error prone. Most errors come from
+ having to link against static libraries or source code found else where on a system or in another project. Common errors will be those that complain of either missing definitions (cannot find appropriate symbols to link 
+against) or duplicate errors (multiple objects exposing the same symbol).
 
 # CMake
 
-So now that I have outlined a bit for you what happens when building a program, we will go through and build a demo program by using a program called CMake. CMake just helps in automating the build process a little, while not abstracting the process so much that one looses touch with what is happening. Using your newly discovered Git skills we will piece together a basic project and get it compiled and linked. You may have to apply some Git trickery along the way to get all the pieces ;).
+So now that I have outlined a bit for you what happens when building a program, we will go through and build a demo program by using a program called CMake. CMake just helps in automating the build process a little, 
+while not abstracting the process so much that one looses touch with what is happening. Using your newly discovered Git skills we will piece together a basic project and get it compiled and linked. You may have to apply
+ some Git trickery along the way to get all the pieces ;).
 
 So now that you have an idea of what goes into building a C project lets see how you can accomplish this using CMake. If we open the CMake file in this branch you should see the following
 
@@ -444,13 +514,23 @@ file(GLOB SOURCES "src/*.c")
 add_executable(foo ${SOURCES})    
 ```
 
-Now the first few lines should be quite self-explanatory. On the fourth line we set the output directory for our binary. Meaning we will need to create a `bin` directory in our repo's root. Do this now. The fifth line is where we tell CMake which directories we want to use as include directories. In the directories here is where make will then look for files that you include using `#include`. This CMake line equates then to the `-I` make build option. Another good common practice is to separate your `.c` source files from your `.h` source files. As can be seen in the CMake, we use a folder called `include` for the header files and a folder called `src` for the source files. Create the `include` folder so it sits alongside the bin and build directories. Following this we can see the `file` command. The file command is a file manipulation command used to achieve lots of different things. In this case it is used with `GLOB`. Glob is used to generate a list of files given one or more globbing expressions, storing the results in a variable, in this case `SOURCES`. From the provided globbing expression we can see that in this case the file command generates a list of all `.c` files that can be found in the `src` folder. Since we do not have this you will also need to create it.
+Now the first few lines should be quite self-explanatory. On the fourth line we set the output directory for our binary. Meaning we will need to create a `bin` directory in our repo's root. Do this now. The fifth line is
+ where we tell CMake which directories we want to use as include directories. In the directories here is where make will then look for files that you include using `#include`. This CMake line equates then to the `-I` make build option. 
+Another good common practice is to separate your `.c` source files from your `.h` source files. As can be seen in the CMake, we use a folder called `include` for the header files and a folder called `src` for the source files.
+ Create the `include` folder so it sits alongside the bin and build directories. Following this we can see the `file` command. The file command is a file manipulation command used to achieve lots of different things. 
+In this case it is used with `GLOB`. Glob is used to generate a list of files given one or more globbing expressions, storing the results in a variable, in this case `SOURCES`. From the provided globbing expression 
+we can see that in this case the file command generates a list of all `.c` files that can be found in the `src` folder. Since we do not have this you will also need to create it.
 
-The final line in the CMake lets CMake know that an executable should be built from the provided source files, in this case those stored in the `SOURCES` variable. This will also perform the required linking should there be more than one source file found, as there are going to be no object files external to our source files' directory.
+The final line in the CMake lets CMake know that an executable should be built from the provided source files, in this case those stored in the `SOURCES` variable. This will also perform the required linking should there
+ be more than one source file found, as there are going to be no object files external to our source files' directory.
 
-Now we are almost there. We have the folder structure set up for our project but we are missing some code! We want to merge the new folder structures that we created back to our merging branch. The problem is that Git only tracks the contents of a folder and not folders themselves. As all of our folders are empty they would not be able to be tracked, commited and then merged to our `merging` branch. A convention of Git to keep Git directories that are empty are to add a `.gitkeep` file to them. This is a hack way of creating a reason for Git to track the folder. In this case we are in need of this folder structure for CMake and as such it is important that Git is able to track our folders. Let's touch a `.gitkeep` into each folder that is empty. `man touch` should help you understand what touching does.
+Now we are almost there. We have the folder structure set up for our project but we are missing some code! We want to merge the new folder structures that we created back to our merging branch. The problem is that Git only
+ tracks the contents of a folder and not folders themselves. As all of our folders are empty they would not be able to be tracked, commited and then merged to our `merging` branch. A convention of Git to keep Git directories 
+that are empty are to add a `.gitkeep` file to them. This is a hack way of creating a reason for Git to track the folder. In this case we are in need of this folder structure for CMake and as such it is important that Git is 
+able to track our folders. Let's touch a `.gitkeep` into each folder that is empty. `man touch` should help you understand what touching does.
 
-Checking the status of your repo you should now see that you can track your empty `src`, `bin` and `include` directories as they all have `.gitkeep` files in them. Add and commit your folders with a meaningful commit message and then checkout your merging branch and merge the folders to your `merging` branch. Come back to this branch (`compiling`) when you have done that.
+Checking the status of your repo you should now see that you can track your empty `src`, `bin` and `include` directories as they all have `.gitkeep` files in them. Add and commit your folders with a meaningful commit message
+ and then checkout your merging branch and merge the folders to your `merging` branch. Come back to this branch (`compiling`) when you have done that.
 
 ## Coding Challenge I
 
@@ -474,10 +554,8 @@ Now we know roughly how to navigate around a Git repo, create, add and commit fi
 
 
 One commit will contain the necessary `.h` and `.c` files for a static library that we will build called `espl_lib`. Another commit will contain a `.patch` for your CMake script to link the library. Checkout the commits, find the files, verify their contents and then use cherry pick to merge them to your merging branch. The instructions (in a separate `.md` file) to continue can also be found in a seperate commit.
-<<<<<<< HEAD
->>>>>>> coding1
-=======
 
+<<<<<<< HEAD
 Now that you have your library code and the CMake patch we will discuss what patches are, as this will also help strengthen your understanding of commits as well as exposing you to what has the be the most important and legacy method for version control in the software industry. The patch will enable your CMake script to compile the `espl_lib` as a static library which we will then link into your project, using it's functions in your main function.
 
 # Patches
@@ -561,24 +639,37 @@ CMakeLists.patch
 +target_link_libraries(foo ESPL_LIB)  
 ```
 
-We can see that there has been 4 lines added. The first line has added the lib directory to our project's includes. This is such that the espl_lib.h can be found during building. The header file for a library exposes the libraries API, in this case it exposes the function `num_to_words` whilst keeping the inner workings of the library inaccessible to the programmer. As such the library ensures the programmer cannot call `get_digit_word` directly. This is good practice to employ. A `.c` and `.h` file combo should implement a black box of code. Your implemented functions inside the `.c` function don't necessarily need to be exposed via the `.h` file. The exposed functions should give as simple and easy to use interface as possible. Such that as much of the programming logic related to the "module" the files implement is maintained within the `.c` file, not necessarily being exposed via the `.h` if unnecessary. A common mistake of beginner programmers to no not properly modularize their code. You want to write you code such that you can make "modules" for different portions of you code, this way they are reusable and more easily tested as you can test them independently.
+We can see that there has been 4 lines added. The first line has added the lib directory to our project's includes. This is such that the espl_lib.h can be found during building. The header file for
+ a library exposes the libraries API, in this case it exposes the function `num_to_words` whilst keeping the inner workings of the library inaccessible to the programmer. As such the library ensures 
+the programmer cannot call `get_digit_word` directly. This is good practice to employ. A `.c` and `.h` file combo should implement a black box of code. Your implemented functions inside the `.c`
+ function don't necessarily need to be exposed via the `.h` file. The exposed functions should give as simple and easy to use interface as possible. Such that as much of the programming logic related to
+ the "module" the files implement is maintained within the `.c` file, not necessarily being exposed via the `.h` if unnecessary. A common mistake of beginner programmers to no not properly modularize their code. 
+You want to write you code such that you can make "modules" for different portions of you code, this way they are reusable and more easily tested as you can test them independently.
 
-Now back to the patch. The three lines at the end of the patch handle the building and linking of the library to our executable. The first line should look familiar in that it is simply gathering the `.c` files from the lib folder needed to build the library. The next line tells CMake that it is to build a static library from the source files that were just globbed. During the build process you will see make compiling a separate target `ESPL_LIB` which will generate a library file (`.a`) in the build directory. The final command is quite self-explanatory and handles the linking of the library to the executable.
+Now back to the patch. The three lines at the end of the patch handle the building and linking of the library to our executable. The first line should look familiar in that it is simply gathering the `.c` files
+ from the lib folder needed to build the library. The next line tells CMake that it is to build a static library from the source files that were just globbed. During the build process you will see make compiling a 
+separate target `ESPL_LIB` which will generate a library file (`.a`) in the build directory. The final command is quite self-explanatory and handles the linking of the library to the executable.
 
-Now that we have our patch and understand it, continue gathering the library files and the `CMakeLists.patch` from this branch and merge them to merging. Once there you are to modify your main function to do the following (you should copy this so when you change branches you don't loose it):
+Now that we have our patch and understand it, continue gathering the library files and the `CMakeLists.patch` from this branch and merge them to merging. Once there you are to modify your main function to do the
+ following (you should copy this so when you change branches you don't loose it):
 
  * Prompt the user from the command line for a number input, instructions should be displayed
  * Call the `num_to_words` function from the `espl_lib` on the inputted numbers
  * Display the returned string to the terminal
  * Prompt the user if they wish to either exit the program or run another number and handle their decision accordingly.
 
-Once your program is performing the above functions and is building using your patched CMake project in the merging branch. Merge it all to master and create a `git tag` (information on how to found [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging)) with the annotation "Exercise 1.1 Submission". This will be used as part of the exercise submissions.
+Once your program is performing the above functions and is building using your patched CMake project in the merging branch. Merge it all to master and create a `git tag` 
+(information on how to found [here](https://git-scm.com/book/en/v2/Git-Basics-Tagging)) with the annotation "Exercise 1.1 Submission". This will be used as part of the exercise submissions.
 Following the completion of this go to the `conflicts` branch where we will look at how to deal with merge conflicts.
 # Merge Conflicts
 
-When merging two branches there are sometimes changes that Git cannot automatically resolve. Git prefers then to flag the conflict as something it cannot resolve instead of intervening and potentially causing even larger errors. Errors that require human intervention usually result from changes to the same file, for example two people modify the same line of a file. Git would then require the person merging the files to decide which one it should keep.
+When merging two branches there are sometimes changes that Git cannot automatically resolve. Git prefers then to flag the conflict as something it cannot resolve instead of intervening and potentially 
+causing even larger errors. Errors that require human intervention usually result from changes to the same file, for example two people modify the same line of a file. Git would then require the person 
+merging the files to decide which one it should keep.
 
-It is important to note that during a merge process if you choose the wrong line or mess up the merge you can revert the merge. Meaning you must only commit the merge once you are happy that everything has been merged properly. At any time you can use the `git reset --hard HEAD` command to reset your HEAD to the last commit before the merge (if you didn't pick up on what this is then read [this](http://www.gitguys.com/topics/head-where-are-we-where-were-we/)).
+It is important to note that during a merge process if you choose the wrong line or mess up the merge you can revert the merge. Meaning you must only commit the merge once you are happy that everything 
+has been merged properly. At any time you can use the `git reset --hard HEAD` command to reset your HEAD to the last commit before the merge (if you didn't pick up on what this is then read 
+[this](http://www.gitguys.com/topics/head-where-are-we-where-were-we/)).
 
 ## Resolving a conflict
 
@@ -591,9 +682,11 @@ Unmerged paths:
 	both modified:   src/main.c
 ```
 
-Inside each conflict file Git places markers that indicate the area of conflict. Let's take the simple example where two changes affected the same line of code in a file. This means that Git needs you to decide which change to keep. You will manually need to edit the code to integrate both solutions into your project. Choosing how to fix your code will be up to your discretion.
+Inside each conflict file Git places markers that indicate the area of conflict. Let's take the simple example where two changes affected the same line of code in a file.
+ This means that Git needs you to decide which change to keep. You will manually need to edit the code to integrate both solutions into your project. Choosing how to fix your code will be up to your discretion.
 
-Now in this example I have branched my original code, then on the new branch **and** on my current branch created commits that modify the same line of code. On the current branch I added "Result:" to a `printf` statement while on the branch I added "Output:".
+Now in this example I have branched my original code, then on the new branch **and** on my current branch created commits that modify the same line of code. On the current branch 
+I added "Result:" to a `printf` statement while on the branch I added "Output:".
 
 ``` bash
 Original code (shared commit) ------ + "Result:"
@@ -611,7 +704,8 @@ Looking into the file `src/main.c`, as shown by `git status`, we would see the f
 >>>>>>> bar      
 ```
 
-This tells use that on our current branch (our current HEAD) the line containing "Result", where as on the branch we wish to merge into our current branch (bar) the line contains "Output". Git does not know which one we wish to use and as such we must decide. Let's say that we wish the have the line contain output and not result, then we must manually delete the markers from Git as well as the line. Using our new patch knowledge we can see the what needs to be done below.
+This tells use that on our current branch (our current HEAD) the line containing "Result", where as on the branch we wish to merge into our current branch (bar) the line contains "Output".
+ Git does not know which one we wish to use and as such we must decide. Let's say that we wish the have the line contain output and not result, then we must manually delete the markers from Git as well as the line. Using our new patch knowledge we can see the what needs to be done below.
 
 ``` bash
 --- src/main.c	2019-03-20 11:47:22.947753390 +0100
@@ -630,7 +724,8 @@ This tells use that on our current branch (our current HEAD) the line containing
     return 0;
 Once you have resolved the merge conflict you can then add the resolved file and finalize the merge with a normal commit. The commit message should summarize the changes during the merge.
 
-Now that you has seen the basic ideas of how merging works, lets see if you can handle some more complex merge problem yourself. You will find a branch called "unknown_features" which has diverged from this current branch at the previous commit. Your job now is to merge this branch into this current branch and resolve the conflicts presented. The project is a self-contained CMake project inside the `merge_exercise` folder and you will need to apply you C knowledge and CMake knowledge to merge the files correctly to get the project building properly. Please note that there are other tricks and errors hidden in the code. The code should not complile with warnings as warnings should almost always be treated as errors. Warnings will be cause for deducted marks throughout this course. 
+Now that you has seen the basic ideas of how merging works, lets see if you can handle some more complex merge problem yourself. You will find a branch called "unknown_features" which has diverged from this current
+ branch at the previous commit. Your job now is to merge this branch into this current branch and resolve the conflicts presented. The project is a self-contained CMake project inside the `merge_exercise` folder and you will need to apply you C knowledge and CMake knowledge to merge the files correctly to get the project building properly. Please note that there are other tricks and errors hidden in the code. The code should not complile with warnings as warnings should almost always be treated as errors. Warnings will be cause for deducted marks throughout this course. 
 
 The program should be a POSIX thread based state machine that counts to a number specified in the programs options. See the `--help` of the compiled binary to see how to use the program. Once your binary performs this then you have the project merged and building correctly. Merge the project into `merging` and finally into `master`, if both projects are stable and working as expected. Finally create another tag with the annotation "Exercise 1.2 Submission".
 
@@ -640,12 +735,10 @@ If all of that is done then you have completed this tutorial. Please be wary tha
 
 There are a number of other features in Git that are useful to know. If you are motivated then I would recommend reading up on these features so that during semester you are able to overcome some problems you will no doubt encounter.
 
-<<<<<<< HEAD
->>>>>>> merging
-=======
  * `git stash`
  * `git pull`
  * `git show`
  * `git revert`
  * `git clean`
->>>>>>> merging
+
+
