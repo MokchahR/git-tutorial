@@ -94,7 +94,8 @@ A commit holds the state of the repository at the moment when the commit was cre
 
 Now let's put this into practice. Git repositories almost always contain a README.md file. The README is responsible for giving an overview of and/or instructions for the project on the GitHub/GitLab page when one views the repository in the web interface, as you are probably doing now.
 
-The README usually contains useful information outlining the project, how to build it, developer's contact information etc. As such, we will create and add one to our newly created ESPL repository. Please then create, in your ESPL repository, a `README.md` file. The `.md` signifys that it is a markdown fil, allowing for markdown formatting of the text. Markdown formatting information can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links).
+The README usually contains useful information outlining the project, how to build it, developer's contact information etc. 
+As such, we will create and add one to our newly created ESPL repository. Please then create, in your ESPL repository, a `README.md` file. The `.md` signifys that it is a markdown fil, allowing for markdown formatting of the text. Markdown formatting information can be found [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links).
 
 Please add your name and a quick description to the README then we will go through and add it.
 
@@ -722,14 +723,19 @@ This tells use that on our current branch (our current HEAD) the line containing
      else
          return 1;
     return 0;
-Once you have resolved the merge conflict you can then add the resolved file and finalize the merge with a normal commit. The commit message should summarize the changes during the merge.
+Once you have resolved the merge conflict you can then add the resolved file and finalize the merge with a normal commit. 
+The commit message should summarize the changes during the merge.
 
 Now that you has seen the basic ideas of how merging works, lets see if you can handle some more complex merge problem yourself. You will find a branch called "unknown_features" which has diverged from this current
  branch at the previous commit. Your job now is to merge this branch into this current branch and resolve the conflicts presented. The project is a self-contained CMake project inside the `merge_exercise` folder and you will need to apply you C knowledge and CMake knowledge to merge the files correctly to get the project building properly. Please note that there are other tricks and errors hidden in the code. The code should not complile with warnings as warnings should almost always be treated as errors. Warnings will be cause for deducted marks throughout this course. 
 
-The program should be a POSIX thread based state machine that counts to a number specified in the programs options. See the `--help` of the compiled binary to see how to use the program. Once your binary performs this then you have the project merged and building correctly. Merge the project into `merging` and finally into `master`, if both projects are stable and working as expected. Finally create another tag with the annotation "Exercise 1.2 Submission".
+The program should be a POSIX thread based state machine that counts to a number specified in the programs options. 
+See the `--help` of the compiled binary to see how to use the program. Once your binary performs this then you have 
+the project merged and building correctly. Merge the project into `merging` and finally into `master`, if both projects are stable and working as expected. Finally create another tag with the annotation "Exercise 1.2 Submission".
 
-If all of that is done then you have completed this tutorial. Please be wary that the use of Git is a requirement in this course and will be part of the project's assessment. Inform yourself on proper use of Git commit messages and make sure that you and your team partner establish a Git workflow that you will use throughout the course. A fun tool to use to make sure your workflow has been used properly is `git log --graph --all` which will give you a graphical representation of your repo's logs.
+If all of that is done then you have completed this tutorial. Please be wary that the use of Git is a requirement in this 
+course and will be part of the project's assessment. Inform yourself on proper use of Git commit messages and make sure 
+that you and your team partner establish a Git workflow that you will use throughout the course. A fun tool to use to make sure your workflow has been used properly is `git log --graph --all` which will give you a graphical representation of your repo's logs.
 
 # Future Reading
 
